@@ -630,7 +630,7 @@ uint64_t _glfwPlatformGetTimerFrequency(void);
 int _glfwPlatformCreateWindow(_GLFWwindow* window,
                               const _GLFWwndconfig* wndconfig,
                               const _GLFWctxconfig* ctxconfig,
-                              const _GLFWfbconfig* fbconfig);
+                              const _GLFWfbconfig* fbconfig, void* parent);
 void _glfwPlatformDestroyWindow(_GLFWwindow* window);
 void _glfwPlatformSetWindowTitle(_GLFWwindow* window, const char* title);
 void _glfwPlatformSetWindowIcon(_GLFWwindow* window,

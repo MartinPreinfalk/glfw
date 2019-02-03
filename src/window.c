@@ -152,7 +152,14 @@ void _glfwInputWindowMonitor(_GLFWwindow* window, _GLFWmonitor* monitor)
 GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
                                      const char* title,
                                      GLFWmonitor* monitor,
-                                     GLFWwindow* share)
+                                     GLFWwindow* share) {
+    return glfwCreateWindowFromParent(width, height, title, monitor, share, NULL);
+}
+
+GLFWAPI GLFWwindow* glfwCreateWindowFromParent(int width, int height,
+                                     const char* title,
+                                     GLFWmonitor* monitor,
+                                     GLFWwindow* share, void* parent)
 {
     _GLFWfbconfig fbconfig;
     _GLFWctxconfig ctxconfig;
@@ -213,7 +220,7 @@ GLFWAPI GLFWwindow* glfwCreateWindow(int width, int height,
     window->denom       = GLFW_DONT_CARE;
 
     // Open the actual window and create its context
-    if (!_glfwPlatformCreateWindow(window, &wndconfig, &ctxconfig, &fbconfig))
+    if (!_glfwPlatformCreateWindow(window, &wndconfig, &ctxconfig, &fbconfig, parent))
     {
         glfwDestroyWindow((GLFWwindow*) window);
         return NULL;
